@@ -13,6 +13,8 @@ class Routes {
 
     this.app.get('/pet/findById/:id', routeHandler.findPetByIdRouteHandler);
 
+    this.app.get('/pet/findByStatus/:status', routeHandler.findPetByStatusRouteHandler);
+
     //this.app.post('/pet/uploadImage/:petId', routeHandler.uploadPetImageRouteHandler);
 
     this.app.get('*', routeHandler.routeNotFoundHandler);

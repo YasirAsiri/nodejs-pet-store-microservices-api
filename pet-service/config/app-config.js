@@ -1,5 +1,5 @@
 const bodyParser = require('body-parser');
-
+var http = require('http-debug').http;
 
 class AppConfig {
   constructor(app) {
@@ -9,10 +9,13 @@ class AppConfig {
     });
     this.app = app;
   }
+  
 
   includeConfig() {
     this.loadAppLevelConfig();
   }
+
+  
 
   loadAppLevelConfig() {
     this.app.use(

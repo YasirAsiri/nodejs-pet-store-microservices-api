@@ -5,27 +5,51 @@ class RouteHandler {
 
   async findPetByIdRouteHandler(request, response) {
 
-    const id = request.params.id;
-    try {
-      const pet = await helper.findPetById(id);
-      if (pet === undefined) {
-        response.status(CONSTANTS.SERVER_NOT_FOUND_HTTP_CODE).json({
+      const id = request.params.id;
+      try {
+        const pet = await helper.findPetById(id);
+        if (pet === undefined) {
+          response.status(CONSTANTS.SERVER_NOT_FOUND_HTTP_CODE).json({
+            error: true,
+            details: CONSTANTS.OPERATION_FAILD,
+          });
+        } else {
+          response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+            error: false,
+            pets: pet,
+          });
+        }
+      } catch (error) {
+        response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
           error: true,
-          details: CONSTANTS.OPERATION_FAILD,
-        });
-      } else {
-        response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
-          error: false,
-          pets: pet,
+          message: CONSTANTS.SERVER_ERROR_MESSAGE,
         });
       }
-    } catch (error) {
-      response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
-        error: true,
-        message: CONSTANTS.SERVER_ERROR_MESSAGE,
-      });
     }
-}
+
+    async findPetByStatusRouteHandler(request, response) {
+
+      const status = request.params.status;
+      try {
+        const pet = await helper.findPetByStatus(status);
+        if (pet === undefined) {
+          response.status(CONSTANTS.SERVER_NOT_FOUND_HTTP_CODE).json({
+            error: true,
+            details: CONSTANTS.OPERATION_FAILD,
+          });
+        } else {
+          response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+            error: false,
+            pets: pet,
+          });
+        }
+      } catch (error) {
+        response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
+          error: true,
+          message: CONSTANTS.SERVER_ERROR_MESSAGE,
+        });
+      }
+    }
 
   async findAllPetsRouteHandler(request, response) {
 

@@ -4,13 +4,13 @@ let AutoIncrement = require('mongoose-sequence')(mongoose);
 
 let petSchema = new mongoose.Schema(
     {
-    id: { type: String},
+    id: { type: Number},
     category: {
         id: { type: Number},
         name: { type: String}
     },
     name: { type: String},
-    photoUrls: [{ data: Buffer, contentType: String}],
+    photoUrls: [{ type: String}],
     tags: [
         {
             id: { type: Number},
@@ -21,6 +21,6 @@ let petSchema = new mongoose.Schema(
   
 })
 
-ItemSchema.plugin(AutoIncrement, {id:'order_seq',inc_field: 'order'});
+petSchema.plugin(AutoIncrement, {id:'order_seq',inc_field: 'id'});
 
 module.exports = mongoose.model('Pet', petSchema)

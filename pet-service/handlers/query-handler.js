@@ -1,22 +1,9 @@
 'use strict';
-require('./../config/database');
+const database = require('./../config/database');
 const Pet = require('./../config/pet-schema');
 
 
 class QueryHandler{
-
-	constructor(){
-		this.Mongodb = require("./../config/db");
-		this.projectedKeys = {
-			"name": true,
-			"price": true,
-			"description": true,
-			"image": true,
-			"sku": true,
-			'_id': false,
-			'id': '$_id'
-		};
-	}
 
 	/*
 	* Name of the Method : addNewPet
@@ -43,7 +30,7 @@ class QueryHandler{
 	*/
 	finAllPets() {
 		return new Promise(async (resolve, reject) => {
-			Person.find({}, function (err, result) {
+			Pet.find({}, function (err, result) {
 				if (err)  reject(error);
 				resolve(result);
 			  });
@@ -58,7 +45,7 @@ class QueryHandler{
 	*/
 	findPetById(id) {
 		return new Promise(async (resolve, reject) => {
-			Person.find({id: id}, function (err, result) {
+			Pet.find({id: id}, function (err, result) {
 				if (err)  reject(error);
 				resolve(result);
 			  });
@@ -66,14 +53,14 @@ class QueryHandler{
 	}
 
 		/*
-	* Name of the Method : findAllPets
-	* Description : Fetchs the lis of pets
+	* Name of the Method : findPetByStatus
+	* Description : Finds one pet by status
 	* Parameter : None
 	* Return : Promise<Pets>
 	*/
-	asa() {
+	findPetByStatus(status) {
 		return new Promise(async (resolve, reject) => {
-			Person.find({}, function (err, result) {
+			Pet.find({status: status}, function (err, result) {
 				if (err)  reject(error);
 				resolve(result);
 			  });
