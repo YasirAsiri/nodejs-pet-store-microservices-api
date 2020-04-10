@@ -1,3 +1,4 @@
+'use strict';
 const helper = require('./../handlers/query-handler');
 const CONSTANTS = require('./../config/constants');
 
@@ -14,15 +15,18 @@ class RouteHandler {
             details: CONSTANTS.OPERATION_FAILD,
           });
         } else {
+          let check = (pet.length > 0);
+          let msg = (check) ? CONSTANTS.PET_UPDATED_SUCCESS : CONSTANTS.PET_ID_NOT_EXIST;
           response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
             error: false,
+            message: msg,
             pets: pet,
           });
         }
       } catch (error) {
         response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
           error: true,
-          message: CONSTANTS.SERVER_ERROR_MESSAGE,
+          message: error.message,
         });
       }
     }
@@ -38,15 +42,19 @@ class RouteHandler {
             details: CONSTANTS.OPERATION_FAILD,
           });
         } else {
+          let st = ['available', 'pending', 'sold'];
+          let check = (status in st);
+          let msg = (check) ? "" : CONSTANTS.PET_STATUS_INVALID;
           response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
             error: false,
+            message: msg,
             pets: pet,
           });
         }
       } catch (error) {
         response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
           error: true,
-          message: CONSTANTS.SERVER_ERROR_MESSAGE,
+          message: error.message,
         });
       }
     }
@@ -61,17 +69,47 @@ class RouteHandler {
             details: CONSTANTS.OPERATION_FAILD,
           });
         } else {
+          let msg = (allPets.length > 0) ? "" : CONSTANTS.NO_PETS_STORED;
           response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
             error: false,
+            message: msg,
             pets: allPets,
           });
         }
       } catch (error) {
         response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
           error: true,
-          message: CONSTANTS.SERVER_ERROR_MESSAGE,
+          message: error.message,
         });
       }
+  }
+
+  async updatePetRouteHandler(request, response) {
+
+    const data = request.body;
+    try {
+      const result = await helper.updatePet(data);
+      if (result === undefined) {
+        response.status(CONSTANTS.SERVER_NOT_FOUND_HTTP_CODE).json({
+          error: true,
+          details: CONSTANTS.OPERATION_FAILD,
+        });
+      } else {
+        let check = (result == null);
+        let msg = (!check) ? CONSTANTS.PET_UPDATED_SUCCESS : CONSTANTS.PET_ID_NOT_EXIST;
+        response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+          error: false,
+          message: msg,
+          pet: result,
+        });
+      }
+    } catch (error) {
+      response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
+        error: true,
+        message: error.message,
+      });
+    }
+
   }
 
   async addNewPetRouteHandler(request, response) {
@@ -93,7 +131,7 @@ class RouteHandler {
     } catch (error) {
       response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
         error: true,
-        message: CONSTANTS.SERVER_ERROR_MESSAGE,
+        message: error.message,
       });
     }
   }

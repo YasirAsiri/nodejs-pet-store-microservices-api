@@ -16,7 +16,9 @@ class QueryHandler{
 		return new Promise( async (resolve, reject) => {
 			const pet = new Pet(petData);
 			pet.save(function (err) {
-				if (err) reject(err)
+				if (err) {
+					reject(err)
+				}
 				resolve(pet);
 			})
 		});
@@ -62,6 +64,18 @@ class QueryHandler{
 		return new Promise(async (resolve, reject) => {
 			Pet.find({status: status}, function (err, result) {
 				if (err)  reject(error);
+				resolve(result);
+			  });
+		});
+	}
+
+	updatePet(data) {
+		let id = data.id;
+		delete data.id;
+		return new Promise(async (resolve, reject) => {
+			Pet.findOneAndUpdate({id: id},data, {new: true}, function (err, result) {
+				if (err)   
+				reject(error);
 				resolve(result);
 			  });
 		});
