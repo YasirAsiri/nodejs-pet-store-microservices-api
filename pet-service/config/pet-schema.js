@@ -9,7 +9,7 @@ let petSchema = new mongoose.Schema(
         id: { type: Number},
         name: { type: String}
     },
-    name: { type: String},
+    name: { type: String, required: true},
     photoUrls: [{ type: String}],
     tags: [
         {
@@ -17,7 +17,7 @@ let petSchema = new mongoose.Schema(
             name: { type: String}
         }
     ],
-    status: { type: String, enum: ['available', 'pending', 'sold']}
+    status: { type: String, enum: ['available', 'pending', 'sold'], default: 'available'}
   
 })
 
