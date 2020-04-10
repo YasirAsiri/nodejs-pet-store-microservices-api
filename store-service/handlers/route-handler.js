@@ -25,7 +25,7 @@ class RouteHandler {
       } catch (error) {
         response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
           error: true,
-          message: CONSTANTS.SERVER_ERROR_MESSAGE,
+          message: error.message,
         });
       }
     }
@@ -44,39 +44,39 @@ class RouteHandler {
           let msg = (order.length > 0) ? CONSTANTS.ORDER_DELETED_SUCCESS : CONSTANTS.ORDER_NOT_EXIST;
           response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
             error: false,
-            message: msg,
+            message: order.message,
           });
         }
       } catch (error) {
         response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
           error: true,
-          message: CONSTANTS.SERVER_ERROR_MESSAGE,
+          message: error.message,
         });
       }
     }
 
-  async findAllPetsRouteHandler(request, response) {
+  // async findAllPetsRouteHandler(request, response) {
 
-      try {
-        const allPets = await helper.finAllPets();
-        if (allPets === undefined) {
-          response.status(CONSTANTS.SERVER_NOT_FOUND_HTTP_CODE).json({
-            error: true,
-            details: CONSTANTS.OPERATION_FAILD,
-          });
-        } else {
-          response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
-            error: false,
-            pets: allPets,
-          });
-        }
-      } catch (error) {
-        response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
-          error: true,
-          message: CONSTANTS.SERVER_ERROR_MESSAGE,
-        });
-      }
-  }
+  //     try {
+  //       const allPets = await helper.finAllPets();
+  //       if (allPets === undefined) {
+  //         response.status(CONSTANTS.SERVER_NOT_FOUND_HTTP_CODE).json({
+  //           error: true,
+  //           details: CONSTANTS.OPERATION_FAILD,
+  //         });
+  //       } else {
+  //         response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+  //           error: false,
+  //           pets: allPets,
+  //         });
+  //       }
+  //     } catch (error) {
+  //       response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
+  //         error: true,
+  //         message: CONSTANTS.SERVER_ERROR_MESSAGE,
+  //       });
+  //     }
+  // }
 
   async placeNewOrderRouteHandler(request, response) {
     try {
@@ -97,14 +97,13 @@ class RouteHandler {
     } catch (error) {
       response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
         error: true,
-        message: CONSTANTS.SERVER_ERROR_MESSAGE,
+        message: error.message,
       });
     }
   }
 
   async getPetInventoriesRouteHandler(request, response) {
     try {
-      console.log('In pet inv ' );
       const result = await helper.getPetInventories();
       if (result === undefined) {
         response.status(CONSTANTS.SERVER_NOT_FOUND_HTTP_CODE).json({
@@ -121,7 +120,7 @@ class RouteHandler {
     } catch (error) {
       response.status(CONSTANTS.SERVER_ERROR_HTTP_CODE).json({
         error: true,
-        message: CONSTANTS.SERVER_ERROR_MESSAGE,
+        message: error.message,
       });
     }
   }
@@ -129,7 +128,7 @@ class RouteHandler {
   routeNotFoundHandler(request, response) {
     response.status(CONSTANTS.SERVER_NOT_FOUND_HTTP_CODE).json({
       error: true,
-      message: CONSTANTS.ROUTE_NOT_FOUND,
+      message: error.message,
     });
   }
 }
