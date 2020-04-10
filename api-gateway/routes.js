@@ -27,6 +27,11 @@ class Routes {
       petServiceProxy(req, res);
     });
 
+    // Update pet
+    this.app.put('/pet', (req, res) => {
+      petServiceProxy(req, res);
+    });
+
     // Get pets by status [available, sold, pending]
     this.app.get('/pet/findByStatus/:status', (req, res) => {
       petServiceProxy(req, res);
@@ -43,17 +48,17 @@ class Routes {
   });
 
     // Find purchase order by ID
-    this.app.get('/store/order/:orderId', (req, res) => {
+    this.app.get('/store/order/:id', (req, res) => {
 
       storeServiceProxy(req, res);
     });
 
-    // Find purchase order by ID
-    this.app.delete('/store/order/:orderId', (req, res) => {
+    // Delete purchase order by ID
+    this.app.delete('/store/order/:id', (req, res) => {
       storeServiceProxy(req, res);
     });
 
-    // Returns all orders
+    // Get pet inventories by status
     this.app.get('/store/inventory', (req, res) => {
       storeServiceProxy(req, res);
     });
