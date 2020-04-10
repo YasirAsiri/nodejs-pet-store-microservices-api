@@ -15,7 +15,7 @@ class Routes {
 
     this.app.get('/pet/findByStatus/:status', routeHandler.findPetByStatusRouteHandler);
 
-    //this.app.post('/pet/uploadImage/:petId', routeHandler.uploadPetImageRouteHandler);
+    this.app.put('/pet', routeHandler.updatePetRouteHandler);
 
     this.app.get('*', routeHandler.routeNotFoundHandler);
   }
