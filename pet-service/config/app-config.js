@@ -1,5 +1,4 @@
 const bodyParser = require('body-parser');
-var http = require('http-debug').http;
 
 class AppConfig {
   constructor(app) {
