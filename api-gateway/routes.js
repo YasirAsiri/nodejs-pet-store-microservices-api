@@ -78,7 +78,7 @@ class Routes {
     userServiceProxy(req, res);
   });
 
-    // Get all users
+    // Update user info by username
     this.app.put('/user/:username', (req, res) => {
       userServiceProxy(req, res);
     });

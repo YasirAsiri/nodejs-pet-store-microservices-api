@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "set NODE_ENV=dev && node server.js"
+
   },
   "author": "Yasir Asiri",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.0",
     "http": "0.0.1-security"
