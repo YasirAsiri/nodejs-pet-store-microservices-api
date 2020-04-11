@@ -28,7 +28,7 @@ class QueryHandler{
 	* Name of the Method : findAllPets
 	* Description : Fetchs the list of pets
 	* Parameter : None
-	* Return : Promise<Pet>
+	* Return : Promise<[Pet]>
 	*/
 	finAllPets() {
 		return new Promise(async (resolve, reject) => {
@@ -39,7 +39,7 @@ class QueryHandler{
 		});
 	}
 
-		/*
+	/*
 	* Name of the Method : findPetById
 	* Description : Finds one pet by id
 	* Parameter : id Number
@@ -54,11 +54,11 @@ class QueryHandler{
 		});
 	}
 
-		/*
+	/*
 	* Name of the Method : findPetByStatus
 	* Description : Finds one pet by status
-	* Parameter : None
-	* Return : Promise<Pets>
+	* Parameter : status String
+	* Return : Promise<Pet>
 	*/
 	findPetByStatus(status) {
 		return new Promise(async (resolve, reject) => {
@@ -69,6 +69,12 @@ class QueryHandler{
 		});
 	}
 
+	/*
+	* Name of the Method : updatePet
+	* Description : Finds pet by id and update 
+	* Parameter : data<Pet>
+	* Return : Promise<Pet>
+	*/
 	updatePet(data) {
 		let id = data.id;
 		delete data.id;
