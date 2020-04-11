@@ -16,7 +16,7 @@ class RouteHandler {
           });
         } else {
           let check = (pet.length > 0);
-          let msg = (check) ? CONSTANTS.PET_UPDATED_SUCCESS : CONSTANTS.PET_ID_NOT_EXIST;
+          let msg = (check) ? "" : CONSTANTS.PET_ID_NOT_EXIST;
           response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
             error: false,
             message: msg,
