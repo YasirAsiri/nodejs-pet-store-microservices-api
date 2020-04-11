@@ -5,14 +5,15 @@ let AutoIncrement = require('mongoose-sequence')(mongoose);
 let userSchema = new mongoose.Schema(
     {
     id: { type: Number},
-    firstname: { type: String},
-    lastname: { type: String},
-    email: { type, String},
-    password: { type, String},
-    phone: { type, String},
+    username: {type: String},
+    firstName: { type: String},
+    lastName: { type: String},
+    email: { type: String},
+    password: { type: String},
+    phone: { type: String},
     userStatus: { type: Number, default: 0}
 })
 
-ItemSchema.plugin(AutoIncrement, {id:'order_seq',inc_field: 'id'});
+userSchema.plugin(AutoIncrement, {id:'order_seq',inc_field: 'id'});
 
-module.exports = mongoose.model('User', emailSchema);
+module.exports = mongoose.model('User', userSchema);

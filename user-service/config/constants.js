@@ -11,3 +11,8 @@ module.exports.ROUTE_NOT_FOUND = 'You are at wrong place. Shhoooo...';
 module.exports.SERVER_ERROR_MESSAGE = 'Something bad happend. It\'s not you, it\'s me.';
 
 /* Rest of constants and messages */
+module.exports.USER_NOT_FOUND = 'No user found with the given username. '
+module.exports.USER_DELETED_SUCCESS = 'User deleted succefully. '
+module.exports.USER_CREATED_SUCCESS = 'User created successfully. '
+module.exports.USER_UPDATED_SUCCESS = 'User was updated succefully '
+
