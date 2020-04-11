@@ -43,7 +43,7 @@ class RouteHandler {
           });
         } else {
           let st = ['available', 'pending', 'sold'];
-          let check = (status in st);
+          let check = st.includes(status);
           let msg = (check) ? "" : CONSTANTS.PET_STATUS_INVALID;
           response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
             error: false,
