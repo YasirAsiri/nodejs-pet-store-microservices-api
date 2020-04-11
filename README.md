@@ -1,6 +1,6 @@
 # Pet Store Microservices API
 
-A node js backend API for the pet store, designed to accept requests through http using a tool (e.g postm or curl). This project contains three stand-alone services and a gateway 
+A node js backend API for the pet store, designed to accept requests through http using a tool (e.g., postman or curl). This project contains three stand-alone services and a gateway 
 - ##### [API Gateway](https://github.com/YasirAsiri/nodejs-pet-store-microservices-api/tree/master/api-gateway)
 - ##### [Pet Service](https://github.com/YasirAsiri/nodejs-pet-store-microservices-api/tree/master/pet-service)
 - ##### [Store Service](https://github.com/YasirAsiri/nodejs-pet-store-microservices-api/tree/master/store-service)
