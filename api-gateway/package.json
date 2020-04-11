@@ -2,11 +2,10 @@
   "name": "api-gateway",
   "version": "1.0.0",
   "description": "main api gateway",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set NODE_ENV=dev && node server.js"
-
+    "start": "node server.js"
   },
   "author": "Yasir Asiri",
   "license": "ISC",
