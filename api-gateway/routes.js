@@ -73,8 +73,13 @@ class Routes {
       userServiceProxy(req, res);
   });
 
+    // Delete user by username
+    this.app.delete('/user/:username', (req, res) => {
+    userServiceProxy(req, res);
+  });
+
     // Get all users
-    this.app.get('/users', (req, res) => {
+    this.app.put('/user/:username', (req, res) => {
       userServiceProxy(req, res);
     });
 
