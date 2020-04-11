@@ -28,7 +28,7 @@ class Routes {
     });
 
     // Update pet
-    this.app.put('/pet', (req, res) => {
+    this.app.put('/pet/:id', (req, res) => {
       petServiceProxy(req, res);
     });
 

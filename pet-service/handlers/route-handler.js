@@ -84,11 +84,12 @@ class RouteHandler {
       }
   }
 
-  async updatePetRouteHandler(request, response) {
-
+  async updatePetByIdRouteHandler(request, response) {
+    const id = request.params.id
     const data = request.body;
+    
     try {
-      const result = await helper.updatePet(data);
+      const result = await helper.updatePetById(data, id);
       if (result === undefined) {
         response.status(CONSTANTS.SERVER_NOT_FOUND_HTTP_CODE).json({
           error: true,

@@ -75,8 +75,8 @@ class QueryHandler{
 	* Parameter : data<Pet>
 	* Return : Promise<Pet>
 	*/
-	updatePet(data) {
-		let id = data.id;
+	updatePetById(data, id) {
+
 		delete data.id;
 		return new Promise(async (resolve, reject) => {
 			Pet.findOneAndUpdate({id: id},data, {new: true}, function (err, result) {
