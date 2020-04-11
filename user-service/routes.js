@@ -7,13 +7,13 @@ class Routes {
 
   /* creating app Routes starts */
   appRoutes() {
-    this.app.post('/user', routeHandler.createNewUserRouteHandler); // place order
+    this.app.post('/user', routeHandler.createNewUserRouteHandler); 
 
-    this.app.get('/user/:username', routeHandler.findUserByUsernameRouteHandler); // find order by id
+    this.app.get('/user/:username', routeHandler.findUserByUsernameRouteHandler); 
 
-    this.app.delete('/user/:username', routeHandler.deleteUserByUsernameRouteHandler); // delete order by id
+    this.app.delete('/user/:username', routeHandler.deleteUserByUsernameRouteHandler); 
 
-    this.app.put('/user/:username', routeHandler.updateUserRouteHandler); //get pet inventory 
+    this.app.put('/user/:username', routeHandler.updateUserRouteHandler);
 
     this.app.get('*', routeHandler.routeNotFoundHandler);
   }
